@@ -1,7 +1,15 @@
+assets:
+  js_prod:
+    - bundles/rvkcustomos2display/dist/bbs-tools.min.js
+
 modules:
-  bibEvents:
+  bbsTools:
     dependencies:
       - slidesInSlide
       - toolsModule
+    # Please don't add more files here. Add it in the gulpfile so it gets
+    # compiled into the bbs-tools.min.js. The reason is that Os2Display
+    # include different files on prod and dev and we are trying to minimize
+    # errors by keeping it consistent.
     files:
-      - bundles/rvkcustomos2display/apps/tools/bib-event-data-editor.js
+      - bundles/rvkcustomos2display/dist/bbs-tools.min.js

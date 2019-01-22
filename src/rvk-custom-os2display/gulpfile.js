@@ -7,12 +7,13 @@ const uglify = require("gulp-uglify");
 const rename = require("gulp-rename");
 
 const slideFolders = [
-    "slides/bib-events"
+  "slides/bib-events"
 ];
 const templatesPath = "Resources/public/templates/";
 const jsBuildDir = "Resources/public/dist";
+const toolsDir = "Resources/public/apps/tools";
 
-const compileJs = () => {
+const compileFrontendJs = () => {
   slideFolders.map(function (item) {
     const path = templatesPath + item;
     const fileName = item.split("/").pop() + ".js";
@@ -25,14 +26,28 @@ const compileJs = () => {
       .pipe(gulp.dest(jsBuildDir));
   });
 
-  return new Promise(function(resolve) {
-    console.log("JS built");
+  return new Promise(function (resolve) {
+    console.log("Frontend JS built");
     resolve();
   });
 };
 
-const js = gulp.parallel(compileJs);
-js.description = 'Compile JS';
+const compileToolsJs = () => {
+  gulp.src([
+    `${toolsDir}/bib-event-data-editor.js`,
+  ])
+    .pipe(concat('bbs-tools.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(jsBuildDir));
+
+  return new Promise(function (resolve) {
+    console.log("Tools JS built");
+    resolve();
+  });
+};
+
+const js = gulp.parallel(compileFrontendJs, compileToolsJs);
+js.description = 'Compile frontend and tools JS';
 
 exports.js = js;
 exports.default = js;
