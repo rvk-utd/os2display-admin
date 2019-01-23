@@ -24,8 +24,20 @@ This number is how many events you want visible at the time.
 **Duration of subslides in seconds:**
 How long to display each subslide
 
-#### Example
+_Example:_
+
 If you choose 10 items total to display and you choose 3 items pr. slide with a subslide duration of 10 seconds, your slide will have 4 subslides that each display for 10 seconds. 3 with 3 events and a last one with just one event.
+
+### Background
+Here you can choose a background color for the slide.You can't use a background image with this slide type - because there are images in the events it looks terrible and is not supported.
+
+### Tekst
+**This is not working right now**
+Here you can choose the color, size, and background color of the text.
+
+### Logo
+**This is not working right now**
+Here you can upload and place a logo on the slide.
 
 # Development
 The data feed with events can look [like this .xml file](event-data-feed.xml). The code in `SisCronEventSubscriber` parses XML in that format.
