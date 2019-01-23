@@ -1,9 +1,10 @@
-# os2display administrator interface
+# BBS Os2display administrator interface
 
-For general information about installation see the https://github.com/os2display/docs/blob/development/Installation%20guide.md in the docs repository.
+## Development
+See https://github.com/rvk-utd/os2display-infrastructure for how to set up a development environment.
 
-# Information
-When working with os2display together with the vagrant provided, you have to visit screen.os2display.vm, search.os2display.vm, middleware.os2display.vm, admin.os2display.vm and accept the self-sign certificates. If you don't open a tab for each in Chrome, if not it will not work.
+## Bundles
+Documentation for the [rvk-custom-os2display](src/rvk-custom-os2display/README.md) bundle.
 
 # Helpful commands
 We have defined a couple of commands for os2display.
