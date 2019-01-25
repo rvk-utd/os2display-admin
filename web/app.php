@@ -5,8 +5,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
 // Default to a non-debugging prod-environment. 
-$app_env = isset($_ENV['APP_ENV']) ? $_ENV['APP_ENV'] : 'prod';
-$app_debug = isset($_ENV['APP_DEBUG']) ? $_ENV['APP_DEBUG'] : '0';
+$app_env = getenv('APP_ENV') ? getenv('APP_ENV') : 'prod';
+$app_debug = getenv('APP_DEBUG') ? getenv('APP_DEBUG') : '0';
 
 // Get the symfony autoloader in place.
 $loader = require __DIR__.'/../app/autoload.php';
