@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7156056c61306e553289496c23a4d6f6",
+    "content-hash": "6ccd22f339a052280e31de89c025da9e",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -69,6 +69,50 @@
                 "slugify"
             ],
             "time": "2017-03-23T21:52:55+00:00"
+        },
+        {
+            "name": "cweagans/composer-patches",
+            "version": "1.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-patches.git",
+                "reference": "2ec4f00ff5fb64de584c8c4aea53bf9053ecb0b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/2ec4f00ff5fb64de584c8c4aea53bf9053ecb0b3",
+                "reference": "2ec4f00ff5fb64de584c8c4aea53bf9053ecb0b3",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "cweagans\\Composer\\Patches"
+            },
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a way to patch Composer packages.",
+            "time": "2018-05-11T18:00:16+00:00"
         },
         {
             "name": "debril/rss-atom-bundle",
@@ -431,7 +475,8 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.5.x-dev"
-                }
+                },
+                "patches_applied": []
             },
             "autoload": {
                 "psr-0": {
@@ -2644,32 +2689,35 @@
         },
         {
             "name": "os2display/admin-bundle",
-            "version": "dev-kk-master",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kkos2/os2display-admin-bundle.git",
-                "reference": "703d28d93759b187e9591d4d41179f5d96be369a"
+                "url": "https://github.com/os2display/admin-bundle.git",
+                "reference": "0327757b709305ad0e5043e6ead2d34506cc56e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kkos2/os2display-admin-bundle/zipball/703d28d93759b187e9591d4d41179f5d96be369a",
-                "reference": "703d28d93759b187e9591d4d41179f5d96be369a",
+                "url": "https://api.github.com/repos/os2display/admin-bundle/zipball/0327757b709305ad0e5043e6ead2d34506cc56e3",
+                "reference": "0327757b709305ad0e5043e6ead2d34506cc56e3",
                 "shasum": ""
             },
             "require": {
                 "twig/extensions": "^1.0"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "patches_applied": {
+                    "Switch to supporting a separate configuration for the public search hostname": "patches/admin-bundle-public-search.patch"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Os2Display\\AdminBundle\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Os2Display admin",
-            "support": {
-                "source": "https://github.com/kkos2/os2display-admin-bundle/tree/kk-master"
-            },
-            "time": "2018-11-26T21:36:11+00:00"
+            "time": "2019-02-08T11:43:43+00:00"
         },
         {
             "name": "os2display/core-bundle",
@@ -2728,25 +2776,22 @@
                     "Os2Display\\CoreBundle\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Os2Display core",
-            "support": {
-                "source": "https://github.com/os2display/core-bundle/tree/1.1.0",
-                "issues": "https://github.com/os2display/core-bundle/issues"
-            },
             "time": "2018-07-03T07:53:37+00:00"
         },
         {
             "name": "os2display/default-template-bundle",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/os2display/default-template-bundle.git",
-                "reference": "bed9eb33fc549f7d04760cf9e890cd165f5ffcbe"
+                "reference": "bee59b69cb9fc26b7783408ecba508ec48b52484"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/os2display/default-template-bundle/zipball/bed9eb33fc549f7d04760cf9e890cd165f5ffcbe",
-                "reference": "bed9eb33fc549f7d04760cf9e890cd165f5ffcbe",
+                "url": "https://api.github.com/repos/os2display/default-template-bundle/zipball/bee59b69cb9fc26b7783408ecba508ec48b52484",
+                "reference": "bee59b69cb9fc26b7783408ecba508ec48b52484",
                 "shasum": ""
             },
             "type": "symfony-bundle",
@@ -2755,12 +2800,9 @@
                     "Os2Display\\DefaultTemplateBundle\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Os2Display default template",
-            "support": {
-                "source": "https://github.com/os2display/default-template-bundle/tree/1.1.0",
-                "issues": "https://github.com/os2display/default-template-bundle/issues"
-            },
-            "time": "2018-07-02T13:17:25+00:00"
+            "time": "2019-02-19T12:02:39+00:00"
         },
         {
             "name": "os2display/media-bundle",
@@ -2785,12 +2827,57 @@
                     "Os2Display\\MediaBundle\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Os2Display media",
-            "support": {
-                "source": "https://github.com/os2display/media-bundle/tree/1.0.2",
-                "issues": "https://github.com/os2display/media-bundle/issues"
-            },
             "time": "2017-09-19T09:29:02+00:00"
+        },
+        {
+            "name": "os2display/vimeo-bundle",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/os2display/vimeo-bundle.git",
+                "reference": "f982941dcc82d9dbfb8e5c44aed209fd033626dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/os2display/vimeo-bundle/zipball/f982941dcc82d9dbfb8e5c44aed209fd033626dc",
+                "reference": "f982941dcc82d9dbfb8e5c44aed209fd033626dc",
+                "shasum": ""
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Os2Display\\VimeoBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Os2Display vimeo template.",
+            "time": "2019-05-15T13:16:30+00:00"
+        },
+        {
+            "name": "os2display/youtube-bundle",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/os2display/youtube-bundle.git",
+                "reference": "adcb210a1cf2207e9baed2565f22fd8e13481cb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/os2display/youtube-bundle/zipball/adcb210a1cf2207e9baed2565f22fd8e13481cb3",
+                "reference": "adcb210a1cf2207e9baed2565f22fd8e13481cb3",
+                "shasum": ""
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Os2Display\\YoutubeBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Os2Display youtube template.",
+            "time": "2019-05-15T06:34:07+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -6144,20 +6231,35 @@
                 "psr"
             ],
             "time": "2017-02-14T16:28:37+00:00"
-        }
-    ],
-    "aliases": [
+        },
         {
-            "alias": "1.1.1",
-            "alias_normalized": "1.1.1.0",
-            "version": "dev-kk-master",
-            "package": "os2display/admin-bundle"
+            "name": "reload/os2display-slide-tools",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reload/os2display-slide-tools.git",
+                "reference": "87937976e7234803b468b6ea2d5234703fb139fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reload/os2display-slide-tools/zipball/87937976e7234803b468b6ea2d5234703fb139fd",
+                "reference": "87937976e7234803b468b6ea2d5234703fb139fd",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Reload\\Os2DisplaySlideTools\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Reusable tools for working with slides in https://github.com/os2display",
+            "time": "2019-01-31T14:52:31+00:00"
         }
     ],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "os2display/admin-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
