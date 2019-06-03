@@ -23,7 +23,7 @@ if (!isset($_SERVER['SYMFONY_DEBUG'])) {
 require __DIR__.'/../vendor/autoload.php';
 Debug::enable();
 
-$kernel = new AppKernel('acceptance', true);
+$kernel = new AppKernel('dev', true);
 if (PHP_VERSION_ID < 70000) {
     $kernel->loadClassCache();
 }
