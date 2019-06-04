@@ -1,0 +1,12 @@
+{
+  "id": "three-sections",
+  "type": "screen",
+  "name": "Tredelt",
+  "icon": "three-sections.png",
+  "paths": {
+    "live": "three-sections-live.html",
+    "edit": "three-sections-edit.html",
+    "css": "three-sections.min.css"
+  },
+  "orientation": "landscape"
+}

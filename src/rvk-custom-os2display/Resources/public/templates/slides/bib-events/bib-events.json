@@ -7,7 +7,7 @@
     "live": "bib-events-live.html",
     "edit": "bib-events-edit.html",
     "preview": "bib-events-edit.html",
-    "css": "bib-events.css",
+    "css": "bib-events.min.css",
     "js": "bundles/rvkcustomos2display/dist/bib-events.min.js"
   },
   "slide_type": "slides-in-slide",
