@@ -74,6 +74,9 @@
           },
           "os2display/core-bundle": {
               "Fix the FeedService after rss-atom-bundle upgrade": "patches/debril-upgrade-fix.patch"
+          },
+          "os2display/default-template-bundle": {
+              "Don't show date for events today": "patches/calendar-today-time-only.patch"
           }
         }
     }

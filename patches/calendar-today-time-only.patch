@@ -1,0 +1,72 @@
+diff --git a/Resources/public/apps/toolsModule/manual-calendar-editor.js b/Resources/public/apps/toolsModule/manual-calendar-editor.js
+index 2d8a786..d47aa3d 100644
+--- a/Resources/public/apps/toolsModule/manual-calendar-editor.js
++++ b/Resources/public/apps/toolsModule/manual-calendar-editor.js
+@@ -1,18 +1,20 @@
+-angular.module('toolsModule').directive('manualCalendarEditor', function(){
++angular.module('toolsModule').directive('manualCalendarEditor', function () {
+   return {
+     restrict: 'E',
+     replace: true,
+     scope: {
+-      slide:'=',
++      slide: '=',
+       close: '&'
+     },
+     link: function (scope) {
+       function resetInputEvent() {
++        var now = new Date().getTime();
+         scope.newEvent = {
+           "title": null,
+           "place": null,
+           "from": null,
+-          "to": null
++          "to": null,
++          "now": now
+         };
+       }
+       resetInputEvent();
+diff --git a/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar-edit.html b/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar-edit.html
+index 63c00dd..5f7dd40 100644
+--- a/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar-edit.html
++++ b/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar-edit.html
+@@ -14,13 +14,16 @@
+           {{event.place}}
+         </td>
+         <td class="manual-calendar--time">
++          <span data-ng-if="(event.from * 1000 | date:'dd. MMM' && event.to * 1000 | date:'dd. MMM') == (event.now | date:'dd. MMM')">
++            <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span> - <span class="manual-calendar--to">{{event.to * 1000 | date:'HH:mm'}}</span>
++          </span>
+           <span data-ng-if="event.from && !event.to">
+             <span class="manual-calendar--from">{{event.from * 1000 | date:'dd. MMM'}}</span> | <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span>
+           </span>
+           <span data-ng-if="event.from && event.to && (event.from - (event.from % 86400)) != (event.to - (event.to % 86400))">
+             <span class="manual-calendar--from">{{event.from * 1000 | date:'dd. MMM'}} - {{event.to * 1000 | date:'dd. MMM'}}</span>  |  <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span>
+           </span>
+-          <span data-ng-if="event.from && event.to && (event.from - (event.from % 86400)) == (event.to - (event.to % 86400))">
++          <span data-ng-if="event.from && event.to && (event.from - (event.from % 86400)) == (event.to - (event.to % 86400)) && (event.from * 1000 | date:'dd. MMM' && event.to * 1000 | date:'dd. MMM') != (event.now | date:'dd. MMM')">
+             <span class="manual-calendar--from">{{event.from * 1000 | date:'dd. MMM'}}</span>  |  <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span> - <span class="manual-calendar--to">{{event.to * 1000 | date:'HH:mm'}}</span>
+           </span>
+         </td>
+diff --git a/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar.html b/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar.html
+index dd8aae0..d96b46d 100644
+--- a/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar.html
++++ b/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar.html
+@@ -12,13 +12,16 @@
+           {{event.place}}
+         </td>
+         <td class="manual-calendar--time">
++          <span data-ng-if="(event.from * 1000 | date:'dd. MMM' && event.to * 1000 | date:'dd. MMM') == (event.now | date:'dd. MMM')">
++            <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span> - <span class="manual-calendar--to">{{event.to * 1000 | date:'HH:mm'}}</span>
++          </span>
+           <span data-ng-if="event.from && !event.to">
+             <span class="manual-calendar--from">{{event.from * 1000 | date:'dd. MMM'}}</span> | <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span>
+           </span>
+           <span data-ng-if="event.from && event.to && (event.from - (event.from % 86400)) != (event.to - (event.to % 86400))"><!-- Hack: (event.from - (event.from % 86400)) != (event.to - (event.to % 86400))   = Not same day -->
+             <span class="manual-calendar--from">{{event.from * 1000 | date:'dd. MMM'}} - {{event.to * 1000 | date:'dd. MMM'}}</span>  |  <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span>
+           </span>
+-          <span data-ng-if="event.from && event.to && (event.from - (event.from % 86400)) == (event.to - (event.to % 86400))">
++          <span data-ng-if="event.from && event.to && (event.from - (event.from % 86400)) == (event.to - (event.to % 86400)) && (event.from * 1000 | date:'dd. MMM' && event.to * 1000 | date:'dd. MMM') != (event.now | date:'dd. MMM')">
+             <span class="manual-calendar--from">{{event.from * 1000 | date:'dd. MMM'}}</span>  |  <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span> - <span class="manual-calendar--to">{{event.to * 1000 | date:'HH:mm'}}</span>
+           </span>
+         </td>
