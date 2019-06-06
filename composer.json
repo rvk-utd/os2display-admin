@@ -71,6 +71,9 @@
         "patches": {
           "os2display/admin-bundle": {
             "Switch to supporting a separate configuration for the public search hostname": "patches/admin-bundle-public-search.patch"
+          },
+          "os2display/core-bundle": {
+              "Fix the FeedService after rss-atom-bundle upgrade": "patches/debril-upgrade-fix.patch"
           }
         }
     }

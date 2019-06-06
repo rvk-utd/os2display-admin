@@ -1,0 +1,24 @@
+diff --git a/Services/FeedService.php b/Services/FeedService.php
+index cb13482..bbdd426 100644
+--- a/Services/FeedService.php
++++ b/Services/FeedService.php
+@@ -68,17 +68,16 @@ class FeedService {
+       }
+       else {
+         // Fetch the FeedReader
+-        $reader = $this->container->get('debril.reader');
++        $reader = $this->container->get('feedio');
+ 
+         try {
+           // Fetch content
+-          $feed = $reader->getFeedContent($source);
++          $feed = $reader->read($source);
+ 
+           // Setup return array.
+           $res = array(
+             array(
+               'feed' => array(),
+-              'title' => $feed->getTitle(),
+             ),
+           );
+ 
