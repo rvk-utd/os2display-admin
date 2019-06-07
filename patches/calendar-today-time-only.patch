@@ -49,14 +49,14 @@ index 63c00dd..5f7dd40 100644
            </span>
          </td>
 diff --git a/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar.html b/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar.html
-index dd8aae0..d96b46d 100644
+index dd8aae0..23f0e52 100644
 --- a/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar.html
 +++ b/Resources/public/templates/default_templates/slides/manual-calendar/manual-calendar.html
 @@ -12,13 +12,16 @@
            {{event.place}}
          </td>
          <td class="manual-calendar--time">
-+          <span data-ng-if="(event.from * 1000 | date:'dd. MMM' && event.to * 1000 | date:'dd. MMM') == (event.now | date:'dd. MMM')">
++          <span data-ng-if="(event.from * 1000 | date:'dd. MMM' && event.to * 1000 | date:'dd. MMM') == (ikSlide.now | date:'dd. MMM')">
 +            <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span> - <span class="manual-calendar--to">{{event.to * 1000 | date:'HH:mm'}}</span>
 +          </span>
            <span data-ng-if="event.from && !event.to">
@@ -66,7 +66,43 @@ index dd8aae0..d96b46d 100644
              <span class="manual-calendar--from">{{event.from * 1000 | date:'dd. MMM'}} - {{event.to * 1000 | date:'dd. MMM'}}</span>  |  <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span>
            </span>
 -          <span data-ng-if="event.from && event.to && (event.from - (event.from % 86400)) == (event.to - (event.to % 86400))">
-+          <span data-ng-if="event.from && event.to && (event.from - (event.from % 86400)) == (event.to - (event.to % 86400)) && (event.from * 1000 | date:'dd. MMM' && event.to * 1000 | date:'dd. MMM') != (event.now | date:'dd. MMM')">
++          <span data-ng-if="event.from && event.to && (event.from - (event.from % 86400)) == (event.to - (event.to % 86400)) && (event.from * 1000 | date:'dd. MMM' && event.to * 1000 | date:'dd. MMM') != (ikSlide.now | date:'dd. MMM')">
              <span class="manual-calendar--from">{{event.from * 1000 | date:'dd. MMM'}}</span>  |  <span class="manual-calendar--to">{{event.from * 1000 | date:'HH:mm'}}</span> - <span class="manual-calendar--to">{{event.to * 1000 | date:'HH:mm'}}</span>
            </span>
          </td>
+diff --git a/Resources/public/templates/js/baseSlide.js b/Resources/public/templates/js/baseSlide.js
+index 26e0889..33ea38b 100644
+--- a/Resources/public/templates/js/baseSlide.js
++++ b/Resources/public/templates/js/baseSlide.js
+@@ -25,12 +25,12 @@ if (!window.slideFunctions['base']) {
+       scope.theStyle = {
+         width: "100%",
+         height: "100%",
+-        fontsize: slide.options.fontsize * (scope.scale ? scope.scale : 1.0)+ "px"
++        fontsize: slide.options.fontsize * (scope.scale ? scope.scale : 1.0) + "px"
+       };
+ 
+       // Set the responsive font size if it is needed.
+       if (slide.options.responsive_fontsize) {
+-        scope.theStyle.responsiveFontsize = slide.options.responsive_fontsize * (scope.scale ? scope.scale : 1.0)+ "vw";
++        scope.theStyle.responsiveFontsize = slide.options.responsive_fontsize * (scope.scale ? scope.scale : 1.0) + "vw";
+       }
+     },
+ 
+@@ -47,6 +47,9 @@ if (!window.slideFunctions['base']) {
+ 
+       var duration = slide.duration !== null ? slide.duration : 15;
+ 
++      if (slide.slide_type == 'base' && slide.template == 'manual-calendar') {
++        slide.now = new Date().getTime();
++      }
+       // Wait fadeTime before start to account for fade in.
+       region.$timeout(function () {
+         // Set the progress bar animation.
+@@ -60,4 +63,4 @@ if (!window.slideFunctions['base']) {
+       }, region.fadeTime);
+     }
+   };
+-}
+\ No newline at end of file
++}
