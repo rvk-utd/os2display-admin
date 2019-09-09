@@ -68,12 +68,24 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": null,
+        "patches-ignore": {
+            "os2display/core-bundle": {
+                "doctrine/dbal": {
+                    "Was merged via https://github.com/doctrine/dbal/pull/3141, is available in version v2.7.2 an onwards": "Features/Fixtures/patch/doctrine-dbal-issues-2426.patch"
+                }
+            }
+        },
         "patches": {
           "os2display/admin-bundle": {
-            "Switch to supporting a separate configuration for the public search hostname": "patches/admin-bundle-public-search.patch"
+            "Switch to supporting a separate configuration for the public search hostname": "patches/admin-bundle-public-search.patch",
+            "Display an error-message instead of a stacktrace": "patches/admin-bundle-login-error.patch",
+            "Fix broken reset form": "patches/admin-bundle-reset-form.patch"
           },
           "os2display/core-bundle": {
-              "Fix the FeedService after rss-atom-bundle upgrade": "patches/debril-upgrade-fix.patch"
+              "Produce absolute reset-links": "patches/core-bundle-absolute-reset-link.patch"
+          },
+          "sonata-project/media-bundle": {
+            "Don't require both hight and width": "patches/sonata-media-bundle-dimension-check.patch"
           }
         }
     }
