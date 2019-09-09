@@ -61,7 +61,7 @@ class SisCronEventSubscriber implements EventSubscriberInterface {
         break;
       }
     }
-    return array_reverse($events);
+    return $events;
   }
 
   private function parseDescription($html)
