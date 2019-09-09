@@ -48,6 +48,9 @@ class SisCronEventSubscriber implements EventSubscriberInterface {
   private function getEvents()
   {
     $events = [];
+    if (empty($this->dataUrl)) {
+      return $events;
+    }
     $rss = DataFetcher::fetchSimpleXml($this->dataUrl);
     foreach ($rss->channel->item as $item) {
       $event = $this->parseDescription((string) $item->description);
