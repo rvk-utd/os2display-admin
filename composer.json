@@ -86,6 +86,9 @@
           },
           "sonata-project/media-bundle": {
             "Don't require both hight and width": "patches/sonata-media-bundle-dimension-check.patch"
+          },
+          "os2display/default-template-bundle": {
+              "Don't show date for events today": "patches/calendar-today-time-only.patch"
           }
         }
     }
