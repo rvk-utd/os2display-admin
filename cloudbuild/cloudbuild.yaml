@@ -9,7 +9,7 @@ steps:
       - --ciphertext-file=cloudbuild/id_rsa.enc
       - --plaintext-file=/root/.ssh/id_rsa
       - --location=global
-      - --keyring=cloud-build-keyring
+      - --keyring=github
       - --key=github-key
     volumes:
       - name: 'ssh'
