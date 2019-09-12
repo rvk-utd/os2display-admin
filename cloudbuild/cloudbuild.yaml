@@ -75,11 +75,11 @@ steps:
     entrypoint: 'bash'
     args:
       - -c
-      - 'docker build -t "eu.gcr.io/os2display-bbs/os2display-bbs/admin-release:$(cat ../.BUILD_TAG)" --build-arg revision=$(cat ../.BUILD_TAG) --build-arg repository="https://github.com/rvk-utd/os2display-admin.git" .'
+      - 'docker build -t "eu.gcr.io/os2display-bbs/os2display-bbs/os2display-admin-release:$(cat ../.BUILD_TAG)" --build-arg revision=$(cat ../.BUILD_TAG) --build-arg repository="https://github.com/rvk-utd/os2display-admin.git" .'
 
   - name: 'gcr.io/cloud-builders/docker'
     dir: 'cloudbuild'
     entrypoint: 'bash'
     args:
       - -c
-      - 'docker push "eu.gcr.io/os2display-bbs/os2display-bbs/admin-release:$(cat ../.BUILD_TAG)"'
+      - 'docker push "eu.gcr.io/os2display-bbs/os2display-bbs/os2display-admin-release:$(cat ../.BUILD_TAG)"'
